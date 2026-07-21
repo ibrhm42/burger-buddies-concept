@@ -8,7 +8,13 @@ This is not an official Burger Buddies website. Burger Buddies has not commissio
 
 The concept demonstrates how customers could browse a structured menu, customize products, prepare an order, and send a complete message through the restaurant's existing WhatsApp workflow.
 
-Read this file and `docs/BURGER_BUDDIES_CONCEPT_PROJECT.md` before planning or editing.
+Read this file and the following project documents before planning or editing:
+
+- `docs/BURGER_BUDDIES_CONCEPT_PROJECT.md`
+- `docs/product-brief.md`
+- `docs/visual-direction.md`
+- `docs/content-inventory.md`
+- `docs/acceptance-criteria.md`
 
 ---
 
