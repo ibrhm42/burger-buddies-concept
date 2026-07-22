@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Burger Buddies Ordering Concept
 
-## Getting Started
+An unofficial, mobile-first Next.js demonstration of a smoother Burger Buddies menu and WhatsApp ordering experience for Mirpurkhas.
 
-First, run the development server:
+Burger Buddies has not commissioned or endorsed this prototype. The project is a sales concept created by Ibrahim.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Product idea
+
+The app lets a customer:
+
+1. Confirm the Mirpurkhas branch.
+2. Browse and search a structured menu.
+3. Customize a product.
+4. Add items to a persistent cart.
+5. Enter delivery or pickup details.
+6. Preview a complete WhatsApp order.
+7. Continue to WhatsApp through an explicit safe action.
+
+## Approved visual direction
+
+The implementation uses a premium dark, food-led ordering design inspired by the supplied Emmanuel Aziabunam reference.
+
+The approved visual asset is stored at:
+
+```text
+public/references/ui/premium-dark-ordering-reference.svg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It is a visual north star, not a screen to clone.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Codex handover
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Codex must begin with [`AGENTS.md`](./AGENTS.md).
 
-## Learn More
+The complete design handoff begins at:
 
-To learn more about Next.js, take a look at the following resources:
+[`docs/design-handoff/README.md`](./docs/design-handoff/README.md)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The handoff includes:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- source-of-truth rules
+- reference analysis
+- design tokens
+- component specifications
+- responsive behavior
+- interaction specifications
+- content map
+- implementation phases
+- rendered visual-QA checklist
+- a ready-to-use Codex start prompt
 
-## Deploy on Vercel
+## Core routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+/
+/menu
+/menu/[productSlug]
+/cart
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- local typed menu data
+- React Context for branch and cart state
+- `localStorage` persistence
+- WhatsApp click-to-chat handoff
+
+## Safe environment setup
+
+Copy the example file:
+
+```bash
+cp .env.example .env.local
+```
+
+Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
+The safe default is:
+
+```env
+NEXT_PUBLIC_DEMO_MODE=true
+NEXT_PUBLIC_WHATSAPP_NUMBER=923XXXXXXXXX
+```
+
+Keep demo mode enabled during development and sales demonstrations. Do not configure the restaurant's live number unless that behavior is intentionally approved.
+
+## Development
+
+Install dependencies and run the development server:
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Verification
+
+```bash
+npm run lint
+npm run build
+```
+
+Additional typecheck or test scripts may be added during implementation.
+
+## Scope boundary
+
+The first concept does not include:
+
+- authentication
+- database
+- production admin dashboard
+- online payment
+- live tracking
+- POS or inventory integration
+- loyalty or coupon systems
+
+The goal is a polished, convincing ordering demonstration—not a free production platform.
+
+## Required disclaimer
+
+> Unofficial ordering concept created for demonstration purposes. Burger Buddies has not commissioned or endorsed this prototype.
