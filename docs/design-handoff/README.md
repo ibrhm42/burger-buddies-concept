@@ -16,25 +16,27 @@ The reference shows a polished dark homepage, product-detail screen, and cart. I
 ## Read in this order
 
 1. [`DESIGN-SOURCE-OF-TRUTH.md`](./DESIGN-SOURCE-OF-TRUTH.md) — authority, approved direction, and what may or may not be copied.
-2. [`reference-analysis.md`](./reference-analysis.md) — detailed extraction of the reference's visual and UX language.
-3. [`design-tokens.md`](./design-tokens.md) — colors, typography, spacing, radii, shadows, motion, and layout tokens.
-4. [`component-specifications.md`](./component-specifications.md) — required component anatomy and variants.
-5. [`responsive-behavior.md`](./responsive-behavior.md) — mobile, tablet, and desktop transformations.
-6. [`interaction-specifications.md`](./interaction-specifications.md) — branch, search, product options, cart, form, dialog, and WhatsApp behavior.
-7. [`content-map.md`](./content-map.md) — page content, labels, sample data, and prohibited claims.
-8. [`implementation-plan.md`](./implementation-plan.md) — phased Codex execution and phase gates.
-9. [`visual-qa-checklist.md`](./visual-qa-checklist.md) — mandatory rendered review and acceptance checklist.
-10. [`CODEX-START-PROMPT.md`](./CODEX-START-PROMPT.md) — first prompt to run in Codex.
+2. [`decision-log.md`](./decision-log.md) — approved decisions and why the Emmanuel reference supersedes the earlier Stitch direction.
+3. [`reference-analysis.md`](./reference-analysis.md) — detailed extraction of the reference's visual and UX language.
+4. [`design-tokens.md`](./design-tokens.md) — colors, typography, spacing, radii, shadows, motion, and layout tokens.
+5. [`component-specifications.md`](./component-specifications.md) — required component anatomy and variants.
+6. [`responsive-behavior.md`](./responsive-behavior.md) — mobile, tablet, and desktop transformations.
+7. [`interaction-specifications.md`](./interaction-specifications.md) — branch, search, product options, cart, form, dialog, and WhatsApp behavior.
+8. [`content-map.md`](./content-map.md) — page content, labels, sample data, and prohibited claims.
+9. [`implementation-plan.md`](./implementation-plan.md) — phased Codex execution and phase gates.
+10. [`visual-qa-checklist.md`](./visual-qa-checklist.md) — mandatory rendered review and acceptance checklist.
+11. [`CODEX-START-PROMPT.md`](./CODEX-START-PROMPT.md) — first prompt to run in Codex.
 
-## Reference asset
+## Reference assets
 
-The approved visual reference is stored at:
+Repository references:
 
 ```text
 public/references/ui/premium-dark-ordering-reference.svg
+public/references/ui/reference-source.md
 ```
 
-It is an SVG wrapper containing the supplied reference image. Treat it as a visual north star, not production artwork.
+The SVG is a repository-safe visual synopsis of the supplied three-screen reference. `reference-source.md` contains the original Dribbble source, published palette, and copyright/adaptation guidance. When the original user-supplied screenshot is available in the active Codex workspace, use it as the highest-fidelity visual reference.
 
 ## Product summary
 
