@@ -18,15 +18,16 @@ The app lets a customer:
 
 ## Approved visual direction
 
-The implementation uses a premium dark, food-led ordering design inspired by the supplied Emmanuel Aziabunam reference.
+The implementation uses a premium dark, food-led ordering design inspired by Emmanuel Aziabunam's **Food Delivery App — Dark UI Ordering Experience**.
 
-The approved visual asset is stored at:
+Repository references:
 
 ```text
 public/references/ui/premium-dark-ordering-reference.svg
+public/references/ui/reference-source.md
 ```
 
-It is a visual north star, not a screen to clone.
+The SVG is a repository-safe visual synopsis. `reference-source.md` contains the original source link and adaptation rules. The reference is a visual north star, not a screen to clone.
 
 ## Codex handover
 
@@ -40,6 +41,7 @@ The handoff includes:
 
 - source-of-truth rules
 - reference analysis
+- design decision log
 - design tokens
 - component specifications
 - responsive behavior
