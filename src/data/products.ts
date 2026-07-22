@@ -1,0 +1,240 @@
+import type { Product, ProductOptionGroup } from "@/types/ordering";
+
+const burgerOptionGroups = [
+  {
+    id: "serving",
+    name: "Choose your option",
+    selectionType: "single",
+    minSelections: 1,
+    maxSelections: 1,
+    options: [
+      { id: "burger-only", name: "Burger only", priceAdjustment: 0 },
+      {
+        id: "make-it-a-meal",
+        name: "Make it a meal",
+        description: "Concept meal option",
+        priceAdjustment: 270,
+      },
+    ],
+  },
+  {
+    id: "extras",
+    name: "Add something extra",
+    selectionType: "multiple",
+    minSelections: 0,
+    maxSelections: 3,
+    options: [
+      { id: "extra-cheese", name: "Extra cheese", priceAdjustment: 80 },
+      { id: "extra-sauce", name: "Extra sauce", priceAdjustment: 50 },
+      { id: "jalapenos", name: "Jalapeños", priceAdjustment: 50 },
+    ],
+  },
+] as const satisfies readonly ProductOptionGroup[];
+
+const pizzaOptionGroups = [
+  {
+    id: "size",
+    name: "Choose a size",
+    selectionType: "single",
+    minSelections: 1,
+    maxSelections: 1,
+    options: [
+      { id: "regular", name: "Regular", priceAdjustment: 0 },
+      { id: "large", name: "Large", priceAdjustment: 400 },
+    ],
+  },
+  {
+    id: "extras",
+    name: "Add something extra",
+    selectionType: "multiple",
+    minSelections: 0,
+    maxSelections: 2,
+    options: [
+      { id: "extra-cheese", name: "Extra cheese", priceAdjustment: 120 },
+      { id: "extra-sauce", name: "Extra sauce", priceAdjustment: 60 },
+    ],
+  },
+] as const satisfies readonly ProductOptionGroup[];
+
+const comboOptionGroups = [
+  {
+    id: "serving",
+    name: "Choose your option",
+    selectionType: "single",
+    minSelections: 1,
+    maxSelections: 1,
+    options: [
+      { id: "standard", name: "Standard", priceAdjustment: 0 },
+      { id: "sharing", name: "Sharing option", priceAdjustment: 400 },
+    ],
+  },
+] as const satisfies readonly ProductOptionGroup[];
+
+export const products = [
+  {
+    id: "product-al-arabi-burger",
+    slug: "al-arabi-burger",
+    name: "Al-Arabi Burger",
+    categoryId: "burgers",
+    description: "A bold burger choice for a satisfying order.",
+    basePrice: 620,
+    imageSrc: "/references/products/al-arabi-burger.jpg",
+    imageClassName: "scale-[1.72] object-[79%_50%]",
+    available: true,
+    quickAddEligible: false,
+    featured: true,
+    optionGroups: burgerOptionGroups,
+  },
+  {
+    id: "product-beef-burger",
+    slug: "beef-burger",
+    name: "Beef Burger",
+    categoryId: "burgers",
+    description: "A classic burger pick for a familiar craving.",
+    basePrice: 690,
+    imageSrc: "/references/products/beef-burger.jpg",
+    imageClassName: "scale-[1.48] object-[52%_54%]",
+    available: true,
+    quickAddEligible: false,
+    featured: true,
+    optionGroups: burgerOptionGroups,
+  },
+  {
+    id: "product-triple-crunch",
+    slug: "triple-crunch",
+    name: "Triple Crunch",
+    categoryId: "burgers",
+    description: "A stacked burger choice with a crisp presentation.",
+    basePrice: 790,
+    imageSrc: "/references/products/beef-burger-2.jpg",
+    imageClassName: "scale-[1.48] object-[50%_52%]",
+    available: true,
+    quickAddEligible: false,
+    featured: true,
+    optionGroups: burgerOptionGroups,
+  },
+  {
+    id: "product-crown-pizza",
+    slug: "crown-pizza",
+    name: "Crown Pizza",
+    categoryId: "pizza",
+    description: "A bold pizza choice presented for sharing.",
+    basePrice: 1290,
+    imageSrc: "/references/products/crown-pizza.jpg",
+    imageClassName: "scale-[1.9] object-[76%_61%]",
+    available: true,
+    quickAddEligible: false,
+    featured: true,
+    optionGroups: pizzaOptionGroups,
+  },
+  {
+    id: "product-chicken-tikka-pizza",
+    slug: "chicken-tikka-pizza",
+    name: "Chicken Tikka Pizza",
+    categoryId: "pizza",
+    description: "A familiar pizza pick with a tikka-style flavour.",
+    basePrice: 1350,
+    imageSrc: "/references/products/chicken-tikka-pizza.jpg",
+    imageClassName: "scale-[2.1] object-[80%_54%]",
+    available: true,
+    quickAddEligible: false,
+    featured: false,
+    optionGroups: pizzaOptionGroups,
+  },
+  {
+    id: "product-arabian-delight-pizza",
+    slug: "arabian-delight-pizza",
+    name: "Arabian Delight Pizza",
+    categoryId: "pizza",
+    description: "A savoury pizza concept for a shared order.",
+    basePrice: 1390,
+    imageSrc: "/references/products/creamy-delight-pizza.jpg",
+    imageClassName: "scale-[2.2] object-[18%_57%]",
+    available: true,
+    quickAddEligible: false,
+    featured: false,
+    optionGroups: pizzaOptionGroups,
+  },
+  {
+    id: "product-deep-dish-pizza",
+    slug: "deep-dish-pizza",
+    name: "Deep Dish Pizza",
+    categoryId: "pizza",
+    description: "A deep-dish pizza format with a comforting presentation.",
+    basePrice: 990,
+    imageSrc: "/references/products/deep-dish.jpg",
+    imageClassName: "scale-[2.05] object-[43%_51%]",
+    available: true,
+    quickAddEligible: false,
+    featured: false,
+    optionGroups: pizzaOptionGroups,
+  },
+  {
+    id: "product-pizza-fries",
+    slug: "pizza-fries",
+    name: "Pizza Fries",
+    categoryId: "sides",
+    description: "A loaded side for adding to a group order.",
+    basePrice: 590,
+    imageSrc: "/references/products/pizza-fries.jpg",
+    imageClassName: "scale-[1.62] object-[52%_55%]",
+    available: true,
+    quickAddEligible: true,
+    featured: false,
+    optionGroups: [],
+  },
+  {
+    id: "product-pasta",
+    slug: "pasta",
+    name: "Pasta",
+    categoryId: "pasta",
+    description: "A pasta concept for an easy comfort-food pick.",
+    basePrice: 720,
+    imageSrc: "/references/products/pasta.jpg",
+    imageClassName: "scale-[1.82] object-[50%_64%]",
+    available: true,
+    quickAddEligible: true,
+    featured: false,
+    optionGroups: [],
+  },
+  {
+    id: "product-crispy-broast",
+    slug: "crispy-broast",
+    name: "Crispy Broast",
+    categoryId: "deals",
+    description: "A crispy chicken pick shown as an unavailable concept item.",
+    basePrice: 780,
+    imageSrc: "/references/products/crispy-broast.jpg",
+    imageClassName: "scale-[1.52] object-[50%_46%]",
+    available: false,
+    quickAddEligible: false,
+    featured: false,
+    optionGroups: [],
+  },
+  {
+    id: "product-combo-platter",
+    slug: "combo-platter",
+    name: "Combo Platter",
+    categoryId: "deals",
+    description: "A mixed sharing concept presented as one selection.",
+    basePrice: 1650,
+    imageSrc: "/references/products/deal-5.jpg",
+    imageClassName: "scale-[3] object-[50%_80%]",
+    available: true,
+    quickAddEligible: false,
+    featured: false,
+    optionGroups: comboOptionGroups,
+  },
+] as const satisfies readonly Product[];
+
+export function getProductBySlug(slug: string) {
+  return products.find((product) => product.slug === slug);
+}
+
+export function getProductById(id: string) {
+  return products.find((product) => product.id === id);
+}
+
+export function isConfigurableProduct(product: Product) {
+  return product.optionGroups.some((group) => group.minSelections > 0);
+}
