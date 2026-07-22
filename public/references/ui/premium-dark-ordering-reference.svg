@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1156" viewBox="0 0 1600 1156" role="img" aria-labelledby="title desc">
+  <title id="title">Premium dark ordering reference synopsis</title>
+  <desc id="desc">A schematic synopsis of three premium dark mobile food ordering screens: discovery, product details, and cart.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9edf1"/>
+      <stop offset="1" stop-color="#d9dee3"/>
+    </linearGradient>
+    <linearGradient id="food1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8b53d"/>
+      <stop offset="0.45" stop-color="#9c5922"/>
+      <stop offset="1" stop-color="#28150d"/>
+    </linearGradient>
+    <linearGradient id="food2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d56d2e"/>
+      <stop offset="0.5" stop-color="#6f2b17"/>
+      <stop offset="1" stop-color="#170d09"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+    <style>
+      .phone{fill:#11110f;stroke:#191918;stroke-width:4}
+      .surface{fill:#2a2927}
+      .surface2{fill:#343330}
+      .muted{fill:#aaa59b}
+      .text{fill:#f7f3ea}
+      .accent{fill:#fe9f08}
+      .line{stroke:#45433e;stroke-width:2}
+      .label{font-family:Arial,sans-serif;font-size:22px;font-weight:700;fill:#f7f3ea}
+      .small{font-family:Arial,sans-serif;font-size:14px;fill:#aaa59b}
+      .tiny{font-family:Arial,sans-serif;font-size:11px;fill:#77736c}
+      .buttonText{font-family:Arial,sans-serif;font-size:15px;font-weight:700;fill:#17130c}
+    </style>
+  </defs>
+  <rect width="1600" height="1156" fill="url(#page)"/>
+
+  <!-- Discovery phone -->
+  <g transform="translate(100 150)" filter="url(#shadow)">
+    <rect class="phone" width="430" height="900" rx="56"/>
+    <text x="34" y="48" class="label" font-size="16">12:52</text>
+    <circle cx="48" cy="108" r="20" fill="url(#food1)"/>
+    <text x="215" y="94" class="tiny" text-anchor="middle">LOCATION</text>
+    <text x="215" y="119" class="label" font-size="17" text-anchor="middle">Mirpurkhas</text>
+    <rect x="356" y="78" width="48" height="48" rx="16" class="surface2"/>
+    <circle cx="390" cy="82" r="10" class="accent"/>
+    <text x="390" y="87" font-family="Arial" font-size="11" font-weight="700" text-anchor="middle" fill="#17130c">4</text>
+
+    <rect x="28" y="156" width="374" height="54" rx="24" class="surface2"/>
+    <circle cx="57" cy="183" r="9" fill="none" stroke="#aaa59b" stroke-width="2"/>
+    <line x1="64" y1="190" x2="71" y2="197" stroke="#aaa59b" stroke-width="2"/>
+    <text x="84" y="189" class="small">Search burgers and pizza</text>
+    <rect x="332" y="163" width="62" height="40" rx="20" fill="#efefec"/>
+    <circle cx="363" cy="183" r="3" fill="#17130c"/>
+    <line x1="351" y1="176" x2="375" y2="176" stroke="#17130c" stroke-width="2"/>
+    <line x1="351" y1="190" x2="375" y2="190" stroke="#17130c" stroke-width="2"/>
+
+    <rect x="28" y="236" width="374" height="164" rx="28" class="accent"/>
+    <text x="50" y="278" font-family="Arial" font-size="20" font-weight="700" fill="#17130c">Today’s Combo Deal</text>
+    <text x="50" y="309" font-family="Arial" font-size="14" fill="#17130c">A bright promotional card</text>
+    <text x="50" y="331" font-family="Arial" font-size="14" fill="#17130c">inside the premium dark UI.</text>
+    <rect x="50" y="346" width="108" height="38" rx="19" fill="#11110f"/>
+    <text x="104" y="371" font-family="Arial" font-size="13" font-weight="700" fill="#f7f3ea" text-anchor="middle">Order Now</text>
+    <circle cx="332" cy="318" r="65" fill="url(#food2)"/>
+    <circle cx="332" cy="318" r="40" fill="#f1bf72" opacity="0.55"/>
+
+    <text x="28" y="444" class="label">Categories</text>
+    <rect x="28" y="462" width="90" height="42" rx="21" fill="#f4f1e8"/>
+    <text x="73" y="489" font-family="Arial" font-size="13" fill="#17130c" text-anchor="middle">Burgers</text>
+    <rect x="128" y="462" width="80" height="42" rx="21" class="surface2"/>
+    <text x="168" y="489" class="small" text-anchor="middle">Pizza</text>
+    <rect x="218" y="462" width="76" height="42" rx="21" class="surface2"/>
+    <text x="256" y="489" class="small" text-anchor="middle">Deals</text>
+
+    <text x="28" y="550" class="label">Picks For You</text>
+    <rect x="28" y="570" width="174" height="228" rx="24" class="surface2"/>
+    <rect x="36" y="578" width="158" height="142" rx="18" fill="url(#food1)"/>
+    <text x="45" y="752" class="label" font-size="16">Chicken Burger</text>
+    <text x="45" y="780" class="small">Rs. 750</text>
+    <rect x="214" y="570" width="174" height="228" rx="24" class="surface2"/>
+    <rect x="222" y="578" width="158" height="142" rx="18" fill="url(#food2)"/>
+    <text x="231" y="752" class="label" font-size="16">Deep Dish Pizza</text>
+    <text x="231" y="780" class="small">Rs. 1,250</text>
+
+    <line x1="0" y1="826" x2="430" y2="826" class="line"/>
+    <circle cx="68" cy="862" r="11" class="accent"/>
+    <text x="68" y="890" class="small" text-anchor="middle" fill="#fe9f08">Home</text>
+    <circle cx="168" cy="862" r="11" fill="#6f6b64"/>
+    <text x="168" y="890" class="small" text-anchor="middle">Menu</text>
+    <circle cx="268" cy="862" r="11" fill="#6f6b64"/>
+    <text x="268" y="890" class="small" text-anchor="middle">Deals</text>
+    <circle cx="368" cy="862" r="11" fill="#6f6b64"/>
+    <text x="368" y="890" class="small" text-anchor="middle">Cart</text>
+  </g>
+
+  <!-- Product phone -->
+  <g transform="translate(590 50)" filter="url(#shadow)">
+    <rect class="phone" width="430" height="900" rx="56"/>
+    <rect x="0" y="0" width="430" height="455" rx="56" fill="url(#food1)"/>
+    <ellipse cx="220" cy="210" rx="148" ry="112" fill="#7b3719" opacity="0.7"/>
+    <ellipse cx="220" cy="170" rx="133" ry="48" fill="#d99a4e"/>
+    <rect x="95" y="190" width="250" height="70" rx="32" fill="#4d2518"/>
+    <path d="M100 205 C150 165, 280 270, 340 200 L325 285 L115 285 Z" fill="#e8c38d" opacity="0.85"/>
+    <circle cx="45" cy="90" r="24" fill="#2c2b28" stroke="#aaa59b"/>
+    <text x="45" y="98" font-family="Arial" font-size="28" fill="#f7f3ea" text-anchor="middle">‹</text>
+    <circle cx="335" cy="90" r="24" fill="#79633f" stroke="#cacfd9"/>
+    <circle cx="385" cy="90" r="24" fill="#4a5757" stroke="#cacfd9"/>
+
+    <path d="M0 420 Q0 390 32 390 H398 Q430 390 430 420 V900 H0 Z" class="surface2"/>
+    <rect x="30" y="428" width="78" height="78" rx="18" fill="url(#food1)"/>
+    <text x="128" y="458" class="label" font-size="22">Chicken Burger</text>
+    <text x="128" y="487" class="small">Premium dark product panel</text>
+    <text x="374" y="456" class="label" font-size="16" text-anchor="end">★ 4.7</text>
+    <text x="30" y="552" class="label">Description</text>
+    <text x="30" y="584" class="small">Large food imagery, compact typography,</text>
+    <text x="30" y="607" class="small">clear hierarchy, and a sticky action.</text>
+
+    <rect x="30" y="642" width="370" height="116" rx="24" fill="#2a2927" stroke="#5a5751"/>
+    <text x="92" y="687" class="label" font-size="18" text-anchor="middle">Rs. 750</text>
+    <text x="92" y="714" class="tiny" text-anchor="middle">Base price</text>
+    <line x1="154" y1="662" x2="154" y2="738" class="line"/>
+    <text x="216" y="687" class="label" font-size="18" text-anchor="middle">Meal</text>
+    <text x="216" y="714" class="tiny" text-anchor="middle">Selected option</text>
+    <line x1="278" y1="662" x2="278" y2="738" class="line"/>
+    <text x="338" y="687" class="label" font-size="18" text-anchor="middle">2 items</text>
+    <text x="338" y="714" class="tiny" text-anchor="middle">Quantity</text>
+
+    <rect x="24" y="790" width="382" height="72" rx="28" fill="#171716"/>
+    <text x="52" y="834" class="label" font-size="17">Rs. 1,500</text>
+    <rect x="264" y="802" width="128" height="48" rx="24" class="accent"/>
+    <text x="328" y="832" class="buttonText" text-anchor="middle">Add to Cart</text>
+  </g>
+
+  <!-- Cart phone -->
+  <g transform="translate(1070 150)" filter="url(#shadow)">
+    <rect class="phone" width="430" height="900" rx="56"/>
+    <circle cx="44" cy="90" r="23" class="surface2"/>
+    <text x="44" y="98" font-family="Arial" font-size="28" fill="#f7f3ea" text-anchor="middle">‹</text>
+    <text x="215" y="98" class="label" font-size="23" text-anchor="middle">Cart</text>
+    <circle cx="386" cy="90" r="23" class="surface2"/>
+
+    <g transform="translate(28 145)">
+      <rect width="92" height="92" rx="20" fill="url(#food1)"/>
+      <text x="112" y="25" class="label" font-size="17">Al-Arabi Burger</text>
+      <text x="112" y="51" class="small">Meal · Extra cheese</text>
+      <text x="112" y="82" class="label" font-size="16">Rs. 950</text>
+      <circle cx="290" cy="68" r="18" class="surface2"/>
+      <text x="290" y="75" class="label" font-size="18" text-anchor="middle">−</text>
+      <text x="332" y="75" class="label" font-size="17" text-anchor="middle">2</text>
+      <circle cx="374" cy="68" r="18" class="accent"/>
+      <text x="374" y="75" font-family="Arial" font-size="20" font-weight="700" fill="#17130c" text-anchor="middle">+</text>
+    </g>
+
+    <g transform="translate(28 270)">
+      <rect width="92" height="92" rx="20" fill="url(#food2)"/>
+      <text x="112" y="25" class="label" font-size="17">Chicken Tikka Pizza</text>
+      <text x="112" y="51" class="small">Large</text>
+      <text x="112" y="82" class="label" font-size="16">Rs. 1,250</text>
+      <circle cx="290" cy="68" r="18" class="surface2"/>
+      <text x="290" y="75" class="label" font-size="18" text-anchor="middle">−</text>
+      <text x="332" y="75" class="label" font-size="17" text-anchor="middle">1</text>
+      <circle cx="374" cy="68" r="18" class="accent"/>
+      <text x="374" y="75" font-family="Arial" font-size="20" font-weight="700" fill="#17130c" text-anchor="middle">+</text>
+    </g>
+
+    <path d="M0 462 Q0 430 32 430 H398 Q430 430 430 462 V900 H0 Z" class="surface2"/>
+    <rect x="28" y="472" width="374" height="54" rx="24" fill="#2a2927" stroke="#5a5751"/>
+    <text x="55" y="505" class="small">Delivery</text>
+    <rect x="215" y="480" width="178" height="38" rx="19" class="accent"/>
+    <text x="304" y="505" class="buttonText" text-anchor="middle">Pickup / Delivery</text>
+
+    <text x="28" y="575" class="small">Subtotal</text>
+    <text x="398" y="575" class="label" font-size="16" text-anchor="end">Rs. 3,150</text>
+    <text x="28" y="622" class="small">Delivery charges</text>
+    <text x="398" y="622" class="small" text-anchor="end">To be confirmed</text>
+    <line x1="28" y1="660" x2="402" y2="660" class="line"/>
+    <text x="28" y="710" class="label" font-size="20">Estimated total</text>
+    <text x="398" y="710" class="label" font-size="20" text-anchor="end">Rs. 3,150</text>
+
+    <rect x="24" y="790" width="382" height="72" rx="28" fill="#171716"/>
+    <text x="52" y="834" class="label" font-size="17">Rs. 3,150</text>
+    <rect x="232" y="802" width="160" height="48" rx="24" class="accent"/>
+    <text x="312" y="832" class="buttonText" text-anchor="middle">Preview Order</text>
+  </g>
+
+  <text x="800" y="1112" font-family="Arial,sans-serif" font-size="18" fill="#5e6469" text-anchor="middle">Repository-safe visual synopsis — see reference-source.md and docs/design-handoff/reference-analysis.md</text>
+</svg>
