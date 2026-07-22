@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, X } from "lucide-react";
-import type { FormEvent } from "react";
+import { useRef, type FormEvent } from "react";
 import { IconButton } from "@/components/ui/icon-button";
 import { cn } from "@/lib/styles";
 
@@ -20,6 +20,8 @@ export function SearchBar({
   onClear,
   onSubmit,
 }: SearchBarProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     onSubmit?.(value.trim());
@@ -35,6 +37,7 @@ export function SearchBar({
         <Search className="size-4 shrink-0 text-text-tertiary" aria-hidden="true" />
         <span className="sr-only">Search the menu</span>
         <input
+          ref={inputRef}
           type="search"
           value={value}
           onChange={(event) => onChange(event.target.value)}
@@ -54,6 +57,7 @@ export function SearchBar({
           onClick={() => {
             onClear?.();
             if (!onClear) onChange("");
+            window.requestAnimationFrame(() => inputRef.current?.focus());
           }}
         >
           <X className="size-4" aria-hidden="true" />

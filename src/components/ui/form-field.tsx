@@ -29,7 +29,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           aria-invalid={Boolean(error)}
           aria-describedby={hint || error ? descriptionId : undefined}
           className={cn(
-            "h-12 w-full rounded-2xl border bg-surface-input px-4 text-sm text-text-primary placeholder:text-text-tertiary transition hover:border-border-strong focus:border-brand focus:outline-none",
+            "h-12 w-full scroll-mb-36 rounded-2xl border bg-surface-input px-4 text-sm text-text-primary placeholder:text-text-tertiary transition hover:border-border-strong focus:border-brand focus:outline-none",
             error ? "border-danger" : "border-border-subtle",
             className,
           )}
@@ -70,7 +70,7 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>
           aria-invalid={Boolean(error)}
           aria-describedby={hint || error ? descriptionId : undefined}
           className={cn(
-            "min-h-28 w-full resize-y rounded-2xl border bg-surface-input px-4 py-3 text-sm leading-6 text-text-primary placeholder:text-text-tertiary transition hover:border-border-strong focus:border-brand focus:outline-none",
+            "min-h-28 w-full scroll-mb-36 resize-y rounded-2xl border bg-surface-input px-4 py-3 text-sm leading-6 text-text-primary placeholder:text-text-tertiary transition hover:border-border-strong focus:border-brand focus:outline-none",
             error ? "border-danger" : "border-border-subtle",
             className,
           )}

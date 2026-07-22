@@ -60,15 +60,44 @@ export const clientWhatsAppConfig = resolveWhatsAppConfig({
   destinationValue: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER,
 });
 
+const customerFacingOptionLabels: Readonly<Record<string, string>> = {
+  serving: "Meal",
+  size: "Size",
+  extras: "Extras",
+};
+
+function optionLabel(groupId: string, groupName: string) {
+  const knownLabel = customerFacingOptionLabels[groupId];
+  if (knownLabel) return knownLabel;
+  if (/choose|add something|required selection/i.test(groupName)) return "Option";
+  return groupName;
+}
+
 function formatLine(line: CartLine) {
   const rows = [
     `${line.quantity} × ${line.product.name} — ${formatPkr(line.lineTotal)}`,
   ];
+
+  const groupedOptions = new Map<
+    string,
+    { label: string; names: string[] }
+  >();
   for (const option of line.selectedOptions) {
-    rows.push(`- ${option.groupName}: ${option.optionName}`);
+    const existing = groupedOptions.get(option.groupId);
+    if (existing) {
+      existing.names.push(option.optionName);
+    } else {
+      groupedOptions.set(option.groupId, {
+        label: optionLabel(option.groupId, option.groupName),
+        names: [option.optionName],
+      });
+    }
+  }
+  for (const group of groupedOptions.values()) {
+    rows.push(`- ${group.label}: ${group.names.join(", ")}`);
   }
   if (line.specialInstructions) {
-    rows.push(`- Special instructions: ${line.specialInstructions}`);
+    rows.push(`- Instructions: ${line.specialInstructions}`);
   }
   return rows.join("\n");
 }

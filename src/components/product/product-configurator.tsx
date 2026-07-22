@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { DemoPriceNotice } from "@/components/menu/demo-price-notice";
 import { QuantitySelector } from "@/components/ui/quantity-selector";
 import { TextareaField } from "@/components/ui/form-field";
 import { buildCartLine } from "@/lib/cart";
@@ -128,9 +127,12 @@ export function ProductConfigurator({
       setInvalidGroups(missingGroupIds);
       const firstInvalid = missingGroupIds[0];
       window.requestAnimationFrame(() => {
-        groupRefs.current[firstInvalid]?.focus();
-        groupRefs.current[firstInvalid]?.scrollIntoView({
-          behavior: "smooth",
+        const group = groupRefs.current[firstInvalid];
+        group?.focus({ preventScroll: true });
+        group?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
           block: "center",
         });
       });
@@ -152,36 +154,24 @@ export function ProductConfigurator({
     }
   }
 
-  const action = (
-    <div className="flex items-center gap-3">
-      <div className="min-w-0 flex-1">
-        <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-text-tertiary">
-          Your total
-        </span>
-        <span className="block text-lg font-black text-text-primary">
-          {formatPkr(configuredTotal)}
-        </span>
-      </div>
-      <button
-        type="button"
-        onClick={submitConfiguration}
-        aria-disabled={!valid}
-        className={cn(
-          "inline-flex h-12 shrink-0 items-center gap-2 rounded-2xl bg-brand px-5 text-sm font-black text-brand-ink shadow-[0_10px_28px_rgb(255_163_26_/_0.18)]",
-          !valid && "opacity-55",
-        )}
-      >
-        <ShoppingBag className="size-4" aria-hidden="true" />
-        {editIdentity ? "Update Item" : "Add to Cart"}
-      </button>
-    </div>
+  const actionButton = (
+    <button
+      type="button"
+      onClick={submitConfiguration}
+      disabled={!product.available}
+      className={cn(
+        "inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand px-5 text-sm font-black text-brand-ink shadow-[0_10px_28px_rgb(255_163_26_/_0.18)] disabled:cursor-not-allowed disabled:opacity-50 lg:w-full",
+      )}
+    >
+      <ShoppingBag className="size-4" aria-hidden="true" />
+      {editIdentity ? "Update Item" : "Add to Cart"}
+    </button>
   );
 
   return (
     <>
-      <DemoPriceNotice className="mt-5" />
       {editMissing && (
-        <p className="mt-4 rounded-2xl border border-border-strong bg-surface-2 p-3 text-xs leading-5 text-text-secondary">
+        <p className="mt-5 rounded-2xl border border-border-strong bg-surface-2 p-3 text-xs leading-5 text-text-secondary">
           That saved cart line is no longer available. You can configure this item
           as a new selection.
         </p>
@@ -199,10 +189,12 @@ export function ProductConfigurator({
                 groupRefs.current[group.id] = node;
               }}
               tabIndex={-1}
+              role={group.selectionType === "single" ? "radiogroup" : "group"}
+              aria-required={group.minSelections > 0}
               aria-invalid={invalid}
               aria-describedby={invalid ? `${group.id}-error` : undefined}
               className={cn(
-                "rounded-[1.35rem] outline-none",
+                "scroll-mb-36 rounded-[1.35rem] outline-none",
                 invalid && "ring-1 ring-danger/70 ring-offset-4 ring-offset-surface-1",
               )}
             >
@@ -247,6 +239,10 @@ export function ProductConfigurator({
                         name={`${product.id}-${group.id}`}
                         checked={selected}
                         disabled={maxReached}
+                        required={
+                          group.selectionType === "single" &&
+                          group.minSelections > 0
+                        }
                         onChange={() => selectOption(group.id, option.id)}
                         className="sr-only"
                       />
@@ -315,12 +311,24 @@ export function ProductConfigurator({
           />
         </div>
 
-        <div className="rounded-2xl border border-border-strong bg-surface-2 p-3 lg:mt-1">
-          <div className="mb-3 flex items-center justify-between gap-4 text-xs text-text-tertiary">
-            <span>Configured unit price</span>
-            <span className="font-black text-text-primary">{formatPkr(unitPrice)}</span>
-          </div>
-          {action}
+        <div className="rounded-2xl border border-border-strong bg-surface-2 p-3.5 lg:mt-1">
+          <dl className="grid gap-2.5 text-xs text-text-tertiary">
+            <div className="flex items-center justify-between gap-4">
+              <dt>Configured unit price</dt>
+              <dd className="font-black text-text-primary">{formatPkr(unitPrice)}</dd>
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              <dt>Quantity</dt>
+              <dd className="font-black text-text-primary">{quantity}</dd>
+            </div>
+            <div className="flex items-end justify-between gap-4 border-t border-border-strong pt-2.5">
+              <dt className="font-bold text-text-secondary">Current total</dt>
+              <dd className="text-base font-black text-text-primary">
+                {formatPkr(configuredTotal)}
+              </dd>
+            </div>
+          </dl>
+          <div className="mt-3 hidden lg:block">{actionButton}</div>
         </div>
 
         <div aria-live="polite" aria-atomic="true" className="min-h-6">
@@ -336,7 +344,17 @@ export function ProductConfigurator({
       </div>
 
       <div className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-border-strong bg-surface-2/97 px-4 pt-3 shadow-[0_-18px_55px_rgb(0_0_0_/_0.5)] backdrop-blur-xl lg:hidden">
-        {action}
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-text-tertiary">
+              Your total
+            </span>
+            <span className="block text-lg font-black text-text-primary">
+              {formatPkr(configuredTotal)}
+            </span>
+          </div>
+          {actionButton}
+        </div>
       </div>
     </>
   );

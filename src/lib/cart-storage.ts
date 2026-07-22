@@ -121,3 +121,26 @@ export function parseCartStorage(raw: string | null): CartLine[] {
     return [];
   }
 }
+
+type StorageReader = Pick<Storage, "getItem">;
+type StorageWriter = Pick<Storage, "setItem">;
+
+export function loadCartStorage(storage: StorageReader) {
+  try {
+    return parseCartStorage(storage.getItem(CART_STORAGE_KEY));
+  } catch {
+    return [];
+  }
+}
+
+export function persistCartStorage(
+  storage: StorageWriter,
+  lines: readonly CartLine[],
+) {
+  try {
+    storage.setItem(CART_STORAGE_KEY, serializeCartStorage(lines));
+    return true;
+  } catch {
+    return false;
+  }
+}

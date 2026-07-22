@@ -2,7 +2,6 @@
 
 import { Bell, Flame, SearchX, ShoppingBag, Sparkles } from "lucide-react";
 import { useState } from "react";
-import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
 import { CategoryTabs } from "@/components/menu/category-tabs";
 import { ProductCard } from "@/components/menu/product-card";
 import { PromotionCard } from "@/components/menu/promotion-card";
@@ -224,7 +223,6 @@ export function DesignFoundationReview() {
           </div>
         </section>
 
-        <ConceptDisclaimer className="mt-4" />
         <p className="mt-4 flex items-center gap-2 text-xs leading-5 text-text-tertiary">
           <Flame className="size-4 shrink-0 text-brand" aria-hidden="true" />
           Existing social-post crops are temporary Phase 1 review assets, not

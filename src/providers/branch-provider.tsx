@@ -11,9 +11,8 @@ import {
 } from "react";
 import { defaultBranch, getBranchById } from "@/data/branches";
 import {
-  BRANCH_STORAGE_KEY,
-  parseBranchStorage,
-  serializeBranchStorage,
+  loadBranchStorage,
+  persistBranchStorage,
 } from "@/lib/branch-storage";
 import { clientWhatsAppConfig, type WhatsAppConfig } from "@/lib/whatsapp";
 import type { Branch } from "@/types/ordering";
@@ -32,14 +31,7 @@ export function BranchProvider({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    let storedBranch: Branch = defaultBranch;
-    try {
-      storedBranch = parseBranchStorage(
-        window.localStorage.getItem(BRANCH_STORAGE_KEY),
-      );
-    } catch {
-      storedBranch = defaultBranch;
-    }
+    const storedBranch = loadBranchStorage(window.localStorage);
     queueMicrotask(() => {
       setBranch(storedBranch);
       setHydrated(true);
@@ -48,14 +40,7 @@ export function BranchProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!hydrated) return;
-    try {
-      window.localStorage.setItem(
-        BRANCH_STORAGE_KEY,
-        serializeBranchStorage(branch.id),
-      );
-    } catch {
-      // Storage may be unavailable in private or restricted browsing contexts.
-    }
+    persistBranchStorage(window.localStorage, branch.id);
   }, [branch.id, hydrated]);
 
   const selectBranch = useCallback((branchId: string) => {

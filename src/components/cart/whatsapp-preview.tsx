@@ -1,6 +1,12 @@
 "use client";
 
-import { AlertCircle, CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  LockKeyhole,
+  MessageCircle,
+  ShieldCheck,
+} from "lucide-react";
 import { DialogSheet } from "@/components/ui/dialog-sheet";
 import type { WhatsAppConfig } from "@/lib/whatsapp";
 
@@ -24,7 +30,11 @@ export function WhatsAppPreview({
       title="Review WhatsApp order"
       description="Review the exact message before any deliberate external continuation."
     >
-      <div className="flex items-start gap-3 rounded-2xl border border-brand/20 bg-brand/7 p-3.5">
+      <div
+        id="whatsapp-availability-reason"
+        role="status"
+        className="flex items-start gap-3 rounded-2xl border border-brand/20 bg-brand/7 p-3.5"
+      >
         <ShieldCheck className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true" />
         <p className="text-xs leading-5 text-text-secondary">{config.reason}</p>
       </div>
@@ -42,10 +52,7 @@ export function WhatsAppPreview({
       {!externalUrl && (
         <div className="mt-4 flex items-start gap-2 text-xs leading-5 text-text-tertiary">
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
-          <p>
-            External continuation is safely disabled. The placeholder{" "}
-            <code>923XXXXXXXXX</code> is always treated as unconfigured.
-          </p>
+          <p>No external WhatsApp conversation can be opened from this preview.</p>
         </div>
       )}
 
@@ -71,10 +78,13 @@ export function WhatsAppPreview({
           <button
             type="button"
             disabled
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl bg-[#25d366] text-sm font-black text-[#063919] opacity-55"
+            aria-describedby="whatsapp-availability-reason"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-border-strong bg-surface-2 px-3 text-center text-sm font-black leading-5 text-text-tertiary disabled:cursor-not-allowed"
           >
-            <CheckCircle2 className="size-4" aria-hidden="true" />
-            Continue to WhatsApp
+            <LockKeyhole className="size-4 shrink-0" aria-hidden="true" />
+            {config.demoMode
+              ? "WhatsApp unavailable in demo mode"
+              : "WhatsApp unavailable"}
           </button>
         )}
       </div>

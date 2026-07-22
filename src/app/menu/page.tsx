@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
 import { PageShell } from "@/components/layout/page-shell";
 import { DemoPriceNotice } from "@/components/menu/demo-price-notice";
 import { MenuBrowser } from "@/components/menu/menu-browser";
@@ -42,7 +41,6 @@ export default async function MenuPage({ searchParams }: MenuPageProps) {
           initialQuery={initialQuery}
         />
         <DemoPriceNotice className="mt-6" />
-        <ConceptDisclaimer compact className="mt-4" />
       </div>
       <StickyCartSummary />
     </PageShell>

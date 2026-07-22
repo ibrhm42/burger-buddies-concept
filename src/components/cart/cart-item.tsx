@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Pencil, Trash2 } from "lucide-react";
 import { QuantitySelector } from "@/components/ui/quantity-selector";
+import { ResilientImage } from "@/components/ui/resilient-image";
 import { formatPkr } from "@/lib/pricing";
 import { cn } from "@/lib/styles";
 import { useCart } from "@/providers/cart-provider";
@@ -18,7 +18,7 @@ export function CartItem({ line }: { line: CartLine }) {
   return (
     <article className="grid grid-cols-[4.8rem_1fr] gap-3 rounded-[1.4rem] border border-border-subtle bg-surface-1 p-3 sm:grid-cols-[6.5rem_1fr] sm:gap-4 sm:p-4">
       <div className="relative aspect-square overflow-hidden rounded-2xl bg-surface-2">
-        <Image
+        <ResilientImage
           src={line.product.imageSrc}
           alt={`Temporary crop representing ${line.product.name}`}
           fill
@@ -28,15 +28,17 @@ export function CartItem({ line }: { line: CartLine }) {
       </div>
       <div className="min-w-0">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-sm font-black leading-5 text-text-primary sm:text-base">
+          <h3 className="min-w-0 break-words text-sm font-black leading-5 text-text-primary sm:text-base">
             {line.product.name}
           </h3>
-          <p className="shrink-0 text-sm font-black text-text-primary">
+          <p className="shrink-0 whitespace-nowrap text-sm font-black text-text-primary">
             {formatPkr(line.lineTotal)}
           </p>
         </div>
         {optionSummary && (
-          <p className="mt-1 text-xs leading-5 text-text-secondary">{optionSummary}</p>
+          <p className="mt-1 break-words text-xs leading-5 text-text-secondary">
+            {optionSummary}
+          </p>
         )}
         {line.specialInstructions && (
           <p className="mt-0.5 line-clamp-2 text-xs leading-5 text-text-tertiary">
@@ -44,7 +46,7 @@ export function CartItem({ line }: { line: CartLine }) {
           </p>
         )}
 
-        <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2">
+        <div className="mt-2.5 flex items-center justify-between gap-2">
           <QuantitySelector
             value={line.quantity}
             onChange={(quantity) => setQuantity(line.identity, quantity)}

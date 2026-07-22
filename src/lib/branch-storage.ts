@@ -27,3 +27,26 @@ export function parseBranchStorage(raw: string | null) {
     return defaultBranch;
   }
 }
+
+type StorageReader = Pick<Storage, "getItem">;
+type StorageWriter = Pick<Storage, "setItem">;
+
+export function loadBranchStorage(storage: StorageReader) {
+  try {
+    return parseBranchStorage(storage.getItem(BRANCH_STORAGE_KEY));
+  } catch {
+    return defaultBranch;
+  }
+}
+
+export function persistBranchStorage(
+  storage: StorageWriter,
+  branchId: string,
+) {
+  try {
+    storage.setItem(BRANCH_STORAGE_KEY, serializeBranchStorage(branchId));
+    return true;
+  } catch {
+    return false;
+  }
+}

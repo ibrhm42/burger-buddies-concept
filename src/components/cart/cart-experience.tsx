@@ -9,8 +9,6 @@ import {
 } from "react";
 import { CartItem } from "@/components/cart/cart-item";
 import { WhatsAppPreview } from "@/components/cart/whatsapp-preview";
-import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
-import { DemoPriceNotice } from "@/components/menu/demo-price-notice";
 import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { Button, buttonStyles } from "@/components/ui/button";
 import { DialogSheet } from "@/components/ui/dialog-sheet";
@@ -68,7 +66,14 @@ export function CartExperience() {
     if (!validation.valid) {
       setErrors(validation.errors);
       window.requestAnimationFrame(() => {
-        fieldRefs.current[validation.firstInvalidField]?.focus();
+        const field = fieldRefs.current[validation.firstInvalidField];
+        field?.focus({ preventScroll: true });
+        field?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+          block: "center",
+        });
       });
       return;
     }
@@ -119,7 +124,6 @@ export function CartExperience() {
             </Link>
           }
         />
-        <ConceptDisclaimer compact className="mt-6" />
         <MobileBottomNav active="cart" />
       </>
     );
@@ -276,8 +280,6 @@ export function CartExperience() {
               />
             </div>
           </section>
-
-          <ConceptDisclaimer compact />
         </div>
 
         <aside className="rounded-[1.6rem] border border-border-subtle bg-surface-1 p-4 sm:p-5 lg:sticky lg:top-28">
@@ -311,7 +313,9 @@ export function CartExperience() {
                   Concept price
                 </span>
               </dt>
-              <dd className="text-xl font-black text-text-primary">{formatPkr(subtotal)}</dd>
+              <dd className="text-base font-black text-text-primary lg:text-xl">
+                {formatPkr(subtotal)}
+              </dd>
             </div>
           </dl>
 
@@ -320,8 +324,6 @@ export function CartExperience() {
             Final price, availability, delivery charges, and timing are confirmed
             in the WhatsApp conversation.
           </div>
-          <DemoPriceNotice className="mt-4" />
-
           <div className="safe-bottom fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-border-strong bg-surface-2/97 px-4 pt-3 shadow-[0_-18px_55px_rgb(0_0_0_/_0.48)] backdrop-blur-xl lg:static lg:mt-5 lg:block lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none">
             <div className="min-w-0 flex-1 lg:hidden">
               <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-text-tertiary">
@@ -333,7 +335,7 @@ export function CartExperience() {
             </div>
             <button
               type="submit"
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand px-4 text-sm font-black text-brand-ink shadow-[0_10px_28px_rgb(255_163_26_/_0.18)] lg:w-full"
+              className="inline-flex h-12 max-w-[68%] shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand px-3 text-center text-[0.78rem] font-black leading-4 text-brand-ink shadow-[0_10px_28px_rgb(255_163_26_/_0.18)] sm:max-w-none sm:px-4 sm:text-sm lg:w-full lg:max-w-none"
             >
               <MessageCircle className="size-4" aria-hidden="true" />
               Preview WhatsApp Order

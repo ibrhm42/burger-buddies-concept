@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowRight, Check, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { ResilientImage } from "@/components/ui/resilient-image";
 import { formatPkr } from "@/lib/pricing";
 import { cn } from "@/lib/styles";
 import { useCart } from "@/providers/cart-provider";
@@ -44,6 +44,7 @@ function ProductAction({ product }: { product: Product }) {
     <button
       type="button"
       className={styles}
+      aria-live="polite"
       onClick={() => {
         if (!quickAddProduct(product)) return;
         setAdded(true);
@@ -78,11 +79,11 @@ export function ProductCard({
         )}
       >
         <div className="relative aspect-square overflow-hidden rounded-2xl bg-surface-2 lg:rounded-none lg:rounded-t-[1.3rem]">
-          <Image
+          <ResilientImage
             src={product.imageSrc}
             alt={`Temporary crop representing ${product.name}`}
             fill
-            sizes="(max-width: 1024px) 120px, 25vw"
+            sizes="(max-width: 640px) 112px, (max-width: 1024px) 128px, (max-width: 1280px) 25vw, 300px"
             className={cn("object-cover", product.imageClassName)}
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-surface-1/85 to-transparent lg:h-16" />
@@ -93,7 +94,7 @@ export function ProductCard({
               {cardBadge}
             </span>
           )}
-          <h3 className="truncate text-sm font-black text-text-primary lg:text-base">
+          <h3 className="break-words text-sm font-black leading-5 text-text-primary lg:text-base">
             {product.name}
           </h3>
           <p className="mt-1 line-clamp-2 text-xs leading-5 text-text-tertiary">
@@ -121,7 +122,7 @@ export function ProductCard({
       )}
     >
       <div className="relative aspect-[1.12/1] overflow-hidden bg-surface-2">
-        <Image
+        <ResilientImage
           src={product.imageSrc}
           alt={`Temporary crop representing ${product.name}`}
           fill
@@ -135,7 +136,9 @@ export function ProductCard({
         )}
       </div>
       <div className="p-3 sm:p-3.5">
-        <h3 className="truncate text-sm font-black text-text-primary">{product.name}</h3>
+        <h3 className="line-clamp-2 break-words text-sm font-black leading-5 text-text-primary">
+          {product.name}
+        </h3>
         <p className="mt-1 line-clamp-2 min-h-9 text-[0.7rem] leading-[1.1rem] text-text-tertiary sm:min-h-10 sm:text-xs sm:leading-5">
           {product.description}
         </p>

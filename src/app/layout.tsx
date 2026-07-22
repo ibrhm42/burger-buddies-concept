@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Hanken_Grotesk } from "next/font/google";
 import { Providers } from "@/app/providers";
+import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -41,6 +42,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>{children}</Providers>
+        <ConceptDisclaimer />
       </body>
     </html>
   );

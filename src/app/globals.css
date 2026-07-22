@@ -60,6 +60,7 @@ html {
   background: var(--background-deep);
   color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-bottom: calc(7rem + env(safe-area-inset-bottom));
 }
 
 body {

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { ResilientImage } from "@/components/ui/resilient-image";
 import { cn } from "@/lib/styles";
 
 type PromotionCardProps = {
@@ -33,13 +33,13 @@ export function PromotionCard({
       )}
     >
       <div className="absolute inset-y-0 right-0 w-[62%] overflow-hidden md:w-[58%]">
-        <Image
+        <ResilientImage
           src={imageSrc}
-          alt="Burger selection"
+          alt="Temporary social-post crop showing a Burger Buddies food selection"
           fill
-          sizes="(max-width: 768px) 62vw, 58vw"
+          sizes="(max-width: 768px) 62vw, (max-width: 1280px) 58vw, 740px"
           className={cn("object-cover", imageClassName)}
-          priority
+          preload
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#efa01d_0%,rgba(239,160,29,0.72)_18%,rgba(239,160,29,0.04)_58%)]" />
       </div>

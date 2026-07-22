@@ -18,7 +18,7 @@ type DesktopHeaderProps = {
 };
 
 export function DesktopHeader({ active = "home" }: DesktopHeaderProps) {
-  const { totalQuantity, subtotal } = useCart();
+  const { hydrated, totalQuantity, subtotal } = useCart();
   return (
     <header className="sticky top-0 z-40 hidden border-b border-border-subtle/80 bg-background/88 backdrop-blur-xl md:block">
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-8 px-8 lg:px-10">
@@ -43,7 +43,7 @@ export function DesktopHeader({ active = "home" }: DesktopHeaderProps) {
         </nav>
         <BranchSelector compact className="min-w-40" />
         <span className="relative flex items-center gap-2">
-          {totalQuantity > 0 && (
+          {hydrated && totalQuantity > 0 && (
             <span className="text-right text-[0.65rem] font-bold leading-4 text-text-tertiary">
               <span className="block text-text-secondary">{totalQuantity} items</span>
               <span className="block">{formatPkr(subtotal)}</span>
@@ -51,7 +51,11 @@ export function DesktopHeader({ active = "home" }: DesktopHeaderProps) {
           )}
           <Link
             href="/cart"
-            aria-label={`Cart, ${totalQuantity} ${totalQuantity === 1 ? "item" : "items"}`}
+            aria-label={
+              hydrated
+                ? `Cart, ${totalQuantity} ${totalQuantity === 1 ? "item" : "items"}`
+                : "Cart"
+            }
             className={`inline-flex size-11 items-center justify-center rounded-full border transition ${
               active === "cart"
                 ? "border-brand bg-brand text-brand-ink"
@@ -60,9 +64,11 @@ export function DesktopHeader({ active = "home" }: DesktopHeaderProps) {
           >
             <ShoppingBag className="size-4" aria-hidden="true" />
           </Link>
-          <span className="pointer-events-none absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-brand text-[0.58rem] font-black text-brand-ink">
-            {totalQuantity > 99 ? "99+" : totalQuantity}
-          </span>
+          {hydrated && (
+            <span className="pointer-events-none absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-brand text-[0.58rem] font-black text-brand-ink">
+              {totalQuantity > 99 ? "99+" : totalQuantity}
+            </span>
+          )}
         </span>
       </div>
     </header>

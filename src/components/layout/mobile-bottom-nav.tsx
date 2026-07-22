@@ -16,7 +16,7 @@ type MobileBottomNavProps = {
 };
 
 export function MobileBottomNav({ active = "home" }: MobileBottomNavProps) {
-  const { totalQuantity } = useCart();
+  const { hydrated, totalQuantity } = useCart();
 
   return (
     <nav
@@ -37,7 +37,7 @@ export function MobileBottomNav({ active = "home" }: MobileBottomNavProps) {
             >
               <span className="relative">
                 <item.icon className="size-4" aria-hidden="true" />
-                {item.key === "cart" && totalQuantity > 0 && (
+                {item.key === "cart" && hydrated && totalQuantity > 0 && (
                   <span className="absolute -right-3 -top-2 grid min-w-4 place-items-center rounded-full bg-brand px-1 text-[0.5rem] font-black leading-4 text-brand-ink">
                     {totalQuantity > 99 ? "99+" : totalQuantity}
                   </span>

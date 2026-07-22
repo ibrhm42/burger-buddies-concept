@@ -11,9 +11,8 @@ import {
 } from "react";
 import { buildCartLine, MAX_CART_QUANTITY, withCartLineQuantity } from "@/lib/cart";
 import {
-  CART_STORAGE_KEY,
-  parseCartStorage,
-  serializeCartStorage,
+  loadCartStorage,
+  persistCartStorage,
 } from "@/lib/cart-storage";
 import { calculateCartSubtotal } from "@/lib/pricing";
 import type { CartLine, Product } from "@/types/ordering";
@@ -102,25 +101,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    let lines: CartLine[] = [];
-    try {
-      lines = parseCartStorage(window.localStorage.getItem(CART_STORAGE_KEY));
-    } catch {
-      lines = [];
-    }
+    const lines = loadCartStorage(window.localStorage);
     dispatch({ type: "hydrate", lines });
   }, []);
 
   useEffect(() => {
     if (!state.hydrated) return;
-    try {
-      window.localStorage.setItem(
-        CART_STORAGE_KEY,
-        serializeCartStorage(state.lines),
-      );
-    } catch {
-      // The in-memory cart remains usable when storage is unavailable.
-    }
+    persistCartStorage(window.localStorage, state.lines);
   }, [state.hydrated, state.lines]);
 
   const addLine = useCallback((line: CartLine) => {
@@ -202,7 +189,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
     ],
   );
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+      <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {state.hydrated
+          ? `Cart has ${totalQuantity} ${totalQuantity === 1 ? "item" : "items"}.`
+          : ""}
+      </span>
+    </CartContext.Provider>
+  );
 }
 
 export function useCart() {

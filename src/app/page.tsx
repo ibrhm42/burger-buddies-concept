@@ -1,4 +1,3 @@
-import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
 import { DesktopHeader } from "@/components/layout/desktop-header";
 import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { MobileHeader } from "@/components/layout/mobile-header";
@@ -77,10 +76,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-        <footer className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 md:px-8 md:pb-10 lg:px-10">
-          <ConceptDisclaimer compact />
-        </footer>
       </main>
 
       <MobileBottomNav />

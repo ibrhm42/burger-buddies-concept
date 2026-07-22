@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
 import { DesktopHeader } from "@/components/layout/desktop-header";
 import { ProductConfigurator } from "@/components/product/product-configurator";
+import { ResilientImage } from "@/components/ui/resilient-image";
 import { formatPkr } from "@/lib/pricing";
 import type { Product } from "@/types/ordering";
 
@@ -24,12 +23,12 @@ export function ProductDetail({
             aria-label={`${product.name} image`}
             className="relative h-[25rem] overflow-hidden bg-surface-2 sm:h-[31rem] lg:sticky lg:top-28 lg:h-[calc(100vh-9rem)] lg:min-h-[42rem] lg:rounded-[2rem] lg:border lg:border-border-subtle"
           >
-            <Image
+            <ResilientImage
               src={product.imageSrc}
               alt={`Temporary crop representing ${product.name}`}
               fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 56vw"
+              preload
+              sizes="(max-width: 1024px) 100vw, 680px"
               className={`object-cover ${product.imageClassName}`}
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.32)_0%,transparent_25%,transparent_65%,rgba(8,8,8,0.62)_100%)]" />
@@ -66,7 +65,6 @@ export function ProductDetail({
             </div>
 
             <ProductConfigurator product={product} editIdentity={editIdentity} />
-            <ConceptDisclaimer compact className="mt-5" />
           </section>
         </div>
       </main>

@@ -12,7 +12,7 @@ export function StickyCartSummary() {
   return (
     <aside
       aria-label="Current order summary"
-      className="fixed inset-x-3 bottom-[4.7rem] z-40 mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-border-strong bg-surface-2/96 p-2.5 pl-3.5 shadow-[0_18px_55px_rgb(0_0_0_/_0.48)] backdrop-blur-xl md:hidden"
+      className="fixed inset-x-3 bottom-[calc(4.7rem+env(safe-area-inset-bottom))] z-40 mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-border-strong bg-surface-2/96 p-2.5 pl-3.5 shadow-[0_18px_55px_rgb(0_0_0_/_0.48)] backdrop-blur-xl md:hidden"
     >
       <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-surface-3 text-brand">
         <ShoppingBag className="size-4" aria-hidden="true" />
