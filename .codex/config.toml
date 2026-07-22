@@ -1,0 +1,55 @@
+# Burger Buddies project defaults for Codex.
+#
+# Default profile: quality-first planning and design interpretation.
+# Switch to the implementation profile after Phase 0 is approved:
+#   codex --profile implementation
+# Use the routine profile for small fixes and lower-cost iteration:
+#   codex --profile routine
+
+profile = "handoff"
+
+# Keep repository work contained. Codex may request approval when an action
+# needs capabilities outside the workspace sandbox.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# Allow current documentation and framework research when needed.
+web_search = "live"
+
+# Keep the complete project instruction file available to the model.
+project_doc_max_bytes = 65536
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+# Prefer useful implementation reports without excessively long narration.
+model_verbosity = "medium"
+model_reasoning_summary = "auto"
+
+[profiles.handoff]
+# Use for CODEX-START-PROMPT.md, source-of-truth reconciliation,
+# architecture planning, and final quality-first audits.
+model = "gpt-5.6-sol"
+model_reasoning_effort = "max"
+plan_mode_reasoning_effort = "max"
+
+[profiles.implementation]
+# Use for the visual foundation, static routes, interaction work,
+# responsive implementation, and rendered visual QA.
+model = "gpt-5.6-sol"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+
+[profiles.routine]
+# Use for focused fixes, content updates, and routine refactoring after the
+# design system and primary routes are stable.
+model = "gpt-5.6-terra"
+model_reasoning_effort = "high"
+plan_mode_reasoning_effort = "high"
+
+[features]
+# The project requires rendered frontend inspection and high-fidelity use of
+# the approved reference image. Unsupported feature flags may be ignored by
+# older Codex builds; keep Codex Desktop/CLI current.
+browser_use = true
+computer_use = true
+in_app_browser = true
+image_detail_original = true
