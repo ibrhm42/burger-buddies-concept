@@ -22,35 +22,41 @@ Before planning or changing application code, read these files in order:
 
 1. `docs/design-handoff/README.md`
 2. `docs/design-handoff/DESIGN-SOURCE-OF-TRUTH.md`
-3. `docs/design-handoff/reference-analysis.md`
-4. `docs/design-handoff/design-tokens.md`
-5. `docs/design-handoff/component-specifications.md`
-6. `docs/design-handoff/responsive-behavior.md`
-7. `docs/design-handoff/interaction-specifications.md`
-8. `docs/design-handoff/content-map.md`
-9. `docs/design-handoff/implementation-plan.md`
-10. `docs/design-handoff/visual-qa-checklist.md`
-11. `docs/product-brief.md`
-12. `docs/acceptance-criteria.md`
-13. `docs/content-inventory.md`
-14. `docs/visual-direction.md`
-15. `docs/BURGER_BUDDIES_CONCEPT_PROJECT.md`
+3. `docs/design-handoff/decision-log.md`
+4. `docs/design-handoff/reference-analysis.md`
+5. `docs/design-handoff/design-tokens.md`
+6. `docs/design-handoff/component-specifications.md`
+7. `docs/design-handoff/responsive-behavior.md`
+8. `docs/design-handoff/interaction-specifications.md`
+9. `docs/design-handoff/content-map.md`
+10. `docs/design-handoff/implementation-plan.md`
+11. `docs/design-handoff/visual-qa-checklist.md`
+12. `docs/product-brief.md`
+13. `docs/acceptance-criteria.md`
+14. `docs/content-inventory.md`
+15. `docs/visual-direction.md`
+16. `docs/BURGER_BUDDIES_CONCEPT_PROJECT.md`
 
-Inspect the approved visual reference at:
+Inspect the in-repository visual synopsis at:
 
 `public/references/ui/premium-dark-ordering-reference.svg`
 
-The SVG embeds the supplied Emmanuel Aziabunam reference image so it remains viewable in the repository.
+Also read:
+
+`public/references/ui/reference-source.md`
+
+When web access is available, inspect the linked original Emmanuel Aziabunam Dribbble work. If the original user-supplied screenshot is available in the active Codex workspace, use it as the highest-fidelity visual reference.
 
 ## Design source-of-truth precedence
 
 When sources disagree, follow this order:
 
-1. `public/references/ui/premium-dark-ordering-reference.svg` for visual quality, density, proportions, surface hierarchy, food-image prominence, mobile polish, product-detail composition, and cart presentation.
-2. `docs/design-handoff/*` for Burger Buddies adaptation, missing screens, tokens, responsive behavior, interactions, and implementation decisions.
-3. `docs/product-brief.md` and `docs/acceptance-criteria.md` for functional behavior and release requirements.
-4. `docs/content-inventory.md` for evidence status and truthfulness.
-5. Existing application code only where it does not conflict with the approved handoff.
+1. The original user-supplied Emmanuel Aziabunam reference screenshot, when available, for visual quality, density, proportions, surface hierarchy, food-image prominence, mobile polish, product-detail composition, and cart presentation.
+2. The source link and in-repository synopsis under `public/references/ui/`.
+3. `docs/design-handoff/*` for Burger Buddies adaptation, missing screens, tokens, responsive behavior, interactions, and implementation decisions.
+4. `docs/product-brief.md` and `docs/acceptance-criteria.md` for functional behavior and release requirements.
+5. `docs/content-inventory.md` for evidence status and truthfulness.
+6. Existing application code only where it does not conflict with the approved handoff.
 
 Do not copy the reference literally. Reinterpret its visual principles as an original, single-brand Burger Buddies ordering experience.
 
