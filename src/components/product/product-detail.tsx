@@ -58,7 +58,9 @@ export function ProductDetail({
               </div>
               <p className="shrink-0 text-right text-base font-black text-text-primary">
                 <span className="block text-[0.58rem] uppercase tracking-[0.11em] text-text-tertiary">
-                  Starting from
+                  {product.optionGroups.length > 0
+                    ? "Concept price from"
+                    : "Concept price"}
                 </span>
                 {formatPkr(product.basePrice)}
               </p>

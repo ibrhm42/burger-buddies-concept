@@ -1,5 +1,7 @@
 # Phase 2 Static Routes — Visual QA
 
+> Historical record: this file preserves the Phase 2 review state. The current release status is documented under `docs/release/`; `/design-review` and its review-only component were removed during Phase 5 release cleanup.
+
 final result: passed
 
 ## Scope

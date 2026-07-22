@@ -281,6 +281,31 @@ describe("WhatsApp safety and message generation", () => {
     expect(createWhatsAppUrl(config, "Test")).toBeNull();
   });
 
+  it("defaults missing release configuration to safe demo behavior", () => {
+    const config = resolveWhatsAppConfig({
+      demoModeValue: undefined,
+      destinationValue: undefined,
+    });
+
+    expect(config).toMatchObject({
+      demoMode: true,
+      destination: null,
+      canContinueExternally: false,
+    });
+    expect(createWhatsAppUrl(config, "Test")).toBeNull();
+  });
+
+  it("never creates a URL from the placeholder even outside demo mode", () => {
+    const config = resolveWhatsAppConfig({
+      demoModeValue: "false",
+      destinationValue: "923XXXXXXXXX",
+    });
+
+    expect(config.canContinueExternally).toBe(false);
+    expect(config.destination).toBeNull();
+    expect(createWhatsAppUrl(config, "Test")).toBeNull();
+  });
+
   it("creates an encoded URL only for a valid non-demo destination", () => {
     const config = resolveWhatsAppConfig({
       demoModeValue: "false",

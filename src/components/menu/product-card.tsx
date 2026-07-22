@@ -103,7 +103,9 @@ export function ProductCard({
           <div className="mt-auto flex items-end justify-between gap-2 pt-2">
             <p className="shrink-0 text-sm font-black text-text-primary">
               <span className="block text-[0.58rem] uppercase tracking-[0.12em] text-text-tertiary">
-                Starting from
+                {product.optionGroups.length > 0
+                  ? "Concept price from"
+                  : "Concept price"}
               </span>
               {formatPkr(product.basePrice)}
             </p>
@@ -145,7 +147,9 @@ export function ProductCard({
         <div className="mt-2.5 flex flex-wrap items-end justify-between gap-2 sm:mt-3 sm:flex-nowrap">
           <p className="text-sm font-black text-text-primary">
             <span className="block text-[0.56rem] uppercase tracking-[0.12em] text-text-tertiary">
-              Starting from
+              {product.optionGroups.length > 0
+                ? "Concept price from"
+                : "Concept price"}
             </span>
             {formatPkr(product.basePrice)}
           </p>

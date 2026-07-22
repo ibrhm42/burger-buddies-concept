@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Hanken_Grotesk } from "next/font/google";
 import { Providers } from "@/app/providers";
 import { ConceptDisclaimer } from "@/components/brand/concept-disclaimer";
@@ -18,16 +18,43 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://burger-buddies-concept.example"),
+  applicationName: "Burger Buddies Ordering Experience — Unofficial Concept",
   title: {
-    default: "Burger Buddies Ordering Concept",
-    template: "%s · Burger Buddies",
+    default: "Burger Buddies Ordering Experience — Unofficial Concept",
+    template: "%s — Burger Buddies Unofficial Concept",
   },
   description:
-    "An unofficial demonstration of a Burger Buddies ordering experience for Mirpurkhas.",
+    "An unofficial ordering experience created to demonstrate a possible WhatsApp-assisted menu and checkout flow for Burger Buddies.",
   icons: {
     icon: "/icon.jpg",
   },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Burger Buddies Ordering Experience — Unofficial Concept",
+    title: "Burger Buddies Ordering Experience — Unofficial Concept",
+    description:
+      "An unofficial ordering experience created to demonstrate a possible WhatsApp-assisted menu and checkout flow for Burger Buddies.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Burger Buddies Ordering Experience — Unofficial Concept",
+    description:
+      "An unofficial ordering experience created to demonstrate a possible WhatsApp-assisted menu and checkout flow for Burger Buddies.",
+  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#0d0d0c",
 };
 
 export default function RootLayout({

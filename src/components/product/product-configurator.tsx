@@ -46,6 +46,7 @@ export function ProductConfigurator({
   const [editMissing, setEditMissing] = useState(false);
   const initializedEditRef = useRef(false);
   const groupRefs = useRef<Record<string, HTMLFieldSetElement | null>>({});
+  const firstOptionRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   useEffect(() => {
     if (!editIdentity || !hydrated || initializedEditRef.current) return;
@@ -128,13 +129,13 @@ export function ProductConfigurator({
       const firstInvalid = missingGroupIds[0];
       window.requestAnimationFrame(() => {
         const group = groupRefs.current[firstInvalid];
-        group?.focus({ preventScroll: true });
         group?.scrollIntoView({
           behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
             ? "auto"
             : "smooth",
           block: "center",
         });
+        firstOptionRefs.current[firstInvalid]?.focus({ preventScroll: true });
       });
       return;
     }
@@ -188,14 +189,13 @@ export function ProductConfigurator({
               ref={(node) => {
                 groupRefs.current[group.id] = node;
               }}
-              tabIndex={-1}
               role={group.selectionType === "single" ? "radiogroup" : "group"}
               aria-required={group.minSelections > 0}
               aria-invalid={invalid}
               aria-describedby={invalid ? `${group.id}-error` : undefined}
               className={cn(
-                "scroll-mb-36 rounded-[1.35rem] outline-none",
-                invalid && "ring-1 ring-danger/70 ring-offset-4 ring-offset-surface-1",
+                "scroll-mb-36 rounded-[1.35rem] border border-transparent p-3.5",
+                invalid && "border-danger/75 bg-danger/[0.035]",
               )}
             >
               <legend className="w-full">
@@ -217,7 +217,7 @@ export function ProductConfigurator({
               </legend>
 
               <div className="mt-3 grid gap-2">
-                {group.options.map((option) => {
+                {group.options.map((option, optionIndex) => {
                   const selected = groupSelection.includes(option.id);
                   const maxReached =
                     group.selectionType === "multiple" &&
@@ -227,7 +227,7 @@ export function ProductConfigurator({
                     <label
                       key={option.id}
                       className={cn(
-                        "flex min-h-16 items-center gap-3 rounded-2xl border px-3.5 py-3 transition",
+                        "flex min-h-16 items-center gap-3 rounded-2xl border px-3.5 py-3 transition focus-within:outline focus-within:outline-2 focus-within:outline-focus focus-within:outline-offset-2",
                         selected
                           ? "border-brand/60 bg-brand/8"
                           : "border-border-subtle bg-background-deep/35",
@@ -235,6 +235,9 @@ export function ProductConfigurator({
                       )}
                     >
                       <input
+                        ref={(node) => {
+                          if (optionIndex === 0) firstOptionRefs.current[group.id] = node;
+                        }}
                         type={group.selectionType === "single" ? "radio" : "checkbox"}
                         name={`${product.id}-${group.id}`}
                         checked={selected}

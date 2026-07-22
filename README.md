@@ -1,57 +1,25 @@
-# Burger Buddies Ordering Concept
+# Burger Buddies Ordering Experience — Unofficial Concept
 
-An unofficial, mobile-first Next.js demonstration of a smoother Burger Buddies menu and WhatsApp ordering experience for Mirpurkhas.
+An unofficial, mobile-first Next.js ordering demonstration for Burger Buddies in Mirpurkhas. It shows a structured menu-to-cart journey and prepares a WhatsApp order for deliberate review.
 
-Burger Buddies has not commissioned or endorsed this prototype. The project is a sales concept created by Ibrahim.
+> Burger Buddies has not commissioned or endorsed this prototype. It is concept work created by Ibrahim for demonstration purposes.
 
-## Product idea
+## Release-candidate status
 
-The app lets a customer:
+The local release candidate includes:
 
-1. Confirm the Mirpurkhas branch.
-2. Browse and search a structured menu.
-3. Customize a product.
-4. Add items to a persistent cart.
-5. Enter delivery or pickup details.
-6. Preview a complete WhatsApp order.
-7. Continue to WhatsApp through an explicit safe action.
+- a premium dark, food-led Burger Buddies interface
+- homepage discovery and a searchable, filterable menu
+- configurable product details with required choices and dynamic concept pricing
+- a persistent cart with edit, quantity, remove, and clear behavior
+- delivery and pickup customer-detail validation
+- a structured in-app WhatsApp order preview
+- safe demo defaults that prevent external WhatsApp continuation
+- intentional empty, unavailable, validation, and not-found experiences
 
-## Approved visual direction
+No backend, account system, payment flow, or live restaurant integration is included.
 
-The implementation uses a premium dark, food-led ordering design inspired by Emmanuel Aziabunam's **Food Delivery App — Dark UI Ordering Experience**.
-
-Repository references:
-
-```text
-public/references/ui/premium-dark-ordering-reference.svg
-public/references/ui/reference-source.md
-```
-
-The SVG is a repository-safe visual synopsis. `reference-source.md` contains the original source link and adaptation rules. The reference is a visual north star, not a screen to clone.
-
-## Codex handover
-
-Codex must begin with [`AGENTS.md`](./AGENTS.md).
-
-The complete design handoff begins at:
-
-[`docs/design-handoff/README.md`](./docs/design-handoff/README.md)
-
-The handoff includes:
-
-- source-of-truth rules
-- reference analysis
-- design decision log
-- design tokens
-- component specifications
-- responsive behavior
-- interaction specifications
-- content map
-- implementation phases
-- rendered visual-QA checklist
-- a ready-to-use Codex start prompt
-
-## Core routes
+## Customer routes
 
 ```text
 /
@@ -60,74 +28,87 @@ The handoff includes:
 /cart
 ```
 
-## Stack
+Unknown routes and product slugs use branded recovery pages. The former `/design-review` surface has been removed and is not part of the release output.
 
-- Next.js 16 App Router
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- local typed menu data
-- React Context for branch and cart state
-- `localStorage` persistence
-- WhatsApp click-to-chat handoff
+## Safe local setup
 
-## Safe environment setup
+Requirements:
 
-Copy the example file:
+- Node.js 20 or newer
+- npm
+
+Install dependencies and copy the safe environment example:
 
 ```bash
+npm install
 cp .env.example .env.local
 ```
 
 Windows PowerShell:
 
 ```powershell
+npm install
 Copy-Item .env.example .env.local
 ```
 
-The safe default is:
+The committed example intentionally uses:
 
 ```env
 NEXT_PUBLIC_DEMO_MODE=true
 NEXT_PUBLIC_WHATSAPP_NUMBER=923XXXXXXXXX
 ```
 
-Keep demo mode enabled during development and sales demonstrations. Do not configure the restaurant's live number unless that behavior is intentionally approved.
+`923XXXXXXXXX` is invalid by design. With the default configuration, checkout opens only the in-app preview, creates no external WhatsApp URL, and cannot contact a restaurant. Do not add a live destination without explicit approval and a separate safety review.
 
-## Development
-
-Install dependencies and run the development server:
+Start the development server:
 
 ```bash
-npm install
 npm run dev
 ```
 
 Open `http://localhost:3000`.
 
+For a local production build:
+
+```bash
+npm run build
+npm run start
+```
+
 ## Verification
 
 ```bash
 npm run lint
+npm run typecheck
+npm test
 npm run build
+npm run check
+npm audit --omit=dev
 ```
 
-Additional typecheck or test scripts may be added during implementation.
+The dependency audit is intentionally reported separately from implementation checks. See [Dependency advisories](./docs/release/dependency-advisories.md) for the current unresolved findings.
+
+## Release documentation
+
+- [Release-candidate notes](./docs/release/RELEASE-CANDIDATE.md)
+- [Acceptance status](./docs/release/acceptance-status.md)
+- [Asset inventory](./docs/release/asset-inventory.md)
+- [Dependency advisories](./docs/release/dependency-advisories.md)
+- [Design handoff](./docs/design-handoff/README.md)
+
+The design-handoff documents remain the historical and architectural source for the approved visual direction.
+
+## Known limitations
+
+- All menu prices are concept data and are not verified current prices.
+- Availability, final price, delivery charges, and timing require confirmation outside this prototype.
+- Mirpurkhas is the only demonstrated branch; no address, opening hours, delivery area, or live restaurant number is presented as verified data.
+- Product imagery is temporarily cropped from supplied social posts. It includes embedded promotional typography in the source files and is not final-quality product photography.
+- The production dependency audit has unresolved transitive findings documented in the release advisory record.
+- Public deployment, indexing, analytics, and live WhatsApp configuration are not authorized. Global metadata is `noindex, nofollow`.
 
 ## Scope boundary
 
-The first concept does not include:
+This concept deliberately excludes authentication, a database, APIs, online payment, live tracking, admin tools, POS or inventory integration, loyalty, vouchers, and production provider configuration.
 
-- authentication
-- database
-- production admin dashboard
-- online payment
-- live tracking
-- POS or inventory integration
-- loyalty or coupon systems
-
-The goal is a polished, convincing ordering demonstration—not a free production platform.
-
-## Required disclaimer
-
-> Unofficial ordering concept created for demonstration purposes. Burger Buddies has not commissioned or endorsed this prototype.
+The goal is a safe, reviewable ordering demonstration—not an official or production Burger Buddies service.
